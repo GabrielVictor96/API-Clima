@@ -13,5 +13,7 @@ RUN dotnet publish --no-restore -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-
+# Padrão de container ASP.NET
+# ENTRYPOINT ["dotnet", "CarterAPI.dll"]
+# Opção utilizada pelo Heroku
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet Ingaia.Challenge.WebApi.dll
